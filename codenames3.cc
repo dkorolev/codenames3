@@ -22,12 +22,15 @@ int main(int argc, char** argv) {
     HTML(body);
     auto const& params = r.url.query;
     if (params.has("p")) {
+      HTML(br);
+      HTML(br);
       {
         HTML(h1);
-        HTML(_) << params.get("p", "Player");
-        }
+        HTML(_) << "<p align=center>" + params.get("p", "Player") + "</p>";
+      }
+      HTML(br);
       {
-        HTML(table);
+        HTML(table, align("center"));
         for (size_t i = 0; i < 5; ++i) {
           HTML(tr, height("100px"));
           for (size_t j = 0; j < 5; ++j) {
